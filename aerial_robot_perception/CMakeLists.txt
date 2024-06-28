@@ -43,7 +43,7 @@ include_directories(
   )
 
 # download and install sample data
-add_custom_target(install_sample_data ALL COMMAND ${PROJECT_SOURCE_DIR}/scripts/install_test_data.py)
+# add_custom_target(install_sample_data ALL COMMAND ${PROJECT_SOURCE_DIR}/scripts/install_test_data.py)
 
 
 macro(arp_add_nodelet _nodelet_cpp _nodelet_class _single_nodelet_exec_name)
