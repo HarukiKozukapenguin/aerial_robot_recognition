@@ -224,12 +224,12 @@ namespace aerial_robot_perception
             cv::line(debug_img, vertices[i], vertices[(i+1)%4], cv::Scalar(255,0,0), 10); //blue
           }
           cv::Point2f arrow_point = cv::Point2f(50.0 * std::cos(angles[i]), 50.0 * std::sin(angles[i])) + passed_rects[i].center;
-          cv::arrowedLine(debug_img, passed_rects[i].center, arrow_point, cv::Scalar(0, 0, 0), 3, CV_AA, 0, 0.4);
+          cv::arrowedLine(debug_img, passed_rects[i].center, arrow_point, cv::Scalar(0, 0, 0), 3, cv::LINE_AA, 0, 0.4);
         }
       } else {
         //no rects
         //cv::putText(debug_img, "no rect", cv::Point(0, 0), cv::FONT_HERSHEY_PLAIN, 100, cv::Scalar(0, 0, 0), 3);
-        cv::putText(debug_img, fail_msg_.c_str(), cv::Point(10, 50), cv::FONT_HERSHEY_SIMPLEX, 1.2, cv::Scalar(0,0,200), 2, CV_AA);
+        cv::putText(debug_img, fail_msg_.c_str(), cv::Point(10, 50), cv::FONT_HERSHEY_SIMPLEX, 1.2, cv::Scalar(0,0,200), 2, cv::LINE_AA);
       }
       sensor_msgs::ImagePtr debug_img_msg = cv_bridge::CvImage(msg->header, rgb_img_encoding_, debug_img).toImageMsg();
       debug_image_pub_.publish(debug_img_msg);
